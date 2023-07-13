@@ -24,4 +24,4 @@ def index(request):
     return render(request, 'website/index.html', context)
 
 def contact(request):
-    return render(request, 'website/contact.html')
+    return render(request, 'website/contact.html', {'title': 'Contact'})
