@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 # Create your views here.
 
 news = [
@@ -15,12 +14,11 @@ news = [
         'content': 'Brunch content',
         'date_created': 'July 13, 2022'
         
-    }
-        
-    
+    }  
 ]
+
 def index(request):
-    context ={
+    context = {
         'news': news
     }
     return render(request, 'website/index.html', context)
