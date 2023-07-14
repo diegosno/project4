@@ -1,6 +1,7 @@
 {% extends "website/base.html" %}
 {% block content %}
 {% for news in news %}
+<div class="container">
 <div class="card bg-light mb-3" style="max-width: 20rem;">
     <div class="card-header">{{ news.title }}</div>
     <div class="card-body">
@@ -9,6 +10,7 @@
       <p>By {{ news.author }} on {{ news.date_created }}</p>
     </div>
   </div>
+</div>
 
  
     {% endfor %}
