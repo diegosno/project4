@@ -7,7 +7,7 @@
     <div class="card-body">
       <h4 class="card-title">Light card title</h4>
       <p class="card-text">{{ news.content }}</p>
-      <p>By {{ news.author }} on {{ news.date_created }}</p>
+      <p>By {{ news.author }} on {{ news.date_created|date:"d/N/Y" }}</p>
     </div>
   </div>
 </div>
