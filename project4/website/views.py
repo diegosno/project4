@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import New
 # Create your views here.
 
 news = [
