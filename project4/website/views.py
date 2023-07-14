@@ -2,21 +2,6 @@ from django.shortcuts import render
 from .models import New
 # Create your views here.
 
-news = [
-    {
-        'title': 'Summer',
-        'author': 'Diego',
-        'content': 'Summer content',
-        'date_created': 'July 12, 2022'
-        }
-    ,
-    {'title': 'Brunch',
-        'author': 'Dany',
-        'content': 'Brunch content',
-        'date_created': 'July 13, 2022'
-        
-    }  
-]
 
 def index(request):
     context = {
