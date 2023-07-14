@@ -20,7 +20,7 @@ news = [
 
 def index(request):
     context = {
-        'news': news
+        'news': New.objects.all()
     }
     return render(request, 'website/index.html', context)
 
