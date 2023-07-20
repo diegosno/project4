@@ -38,7 +38,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Join</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Sign Up</a>
+                  <a class="dropdown-item" href="signup">Sign Up</a>
                   <a class="dropdown-item" href="#">Login</a>
 
                   <div class="dropdown-divider"></div>
@@ -50,32 +50,26 @@
         </div>
       </nav>
     <div class="container">
+        <div class="row justify-content-center my-3">
+        
    <div class="row">
-    <div class="container">News</div>
-            <div  class="col-lg-3 col-sm-6 g-1">
-             
+
+
+            <div  class="col-sm-12 g-1">
+             {% if messages %}
+             {% for message in messages %}
+             <div class="alert alert-{{ message.tags}}"></div>
+             {{ message }}
+             {% endfor %}
+             {% endif %}
                     {% block content %}
                     {% endblock %}
        
               
             </div>
      
-         
-            <div class="col-lg-3 col-sm-6 g-1 ">
-                <div class="box"> hello</div>
-           
-            </div>
-     
-            
-            <div  class="col-lg-3 col-sm-6 g-1 ">
-                <div class="box"> hello</div>
-            </div>
-       
-           
-            <div   class="col-lg-3 col-sm-6 g-1 ">
-                <div class="box"> hello</div>
-            </div>
-       
+         </div>
+   
 
         </div>
    
