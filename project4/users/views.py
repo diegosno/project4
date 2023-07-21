@@ -5,7 +5,7 @@ from forms import signUpForm
 
 def signUp(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = signUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -13,7 +13,7 @@ def signUp(request):
             return redirect('website-index')
 
     else:
-        form = UserCreationForm()
+        form = signUpForm()
     return render(request, 'users/signup.html', {'form': form} )
 
 
