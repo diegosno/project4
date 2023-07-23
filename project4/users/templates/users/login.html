@@ -9,17 +9,17 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Us</legend>
+                <legend class="border-bottom mb-4">Login</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                <button class="btn btn-outline-info" type="submit">Login</button>
             </div>
 
          
         </form>
         <div class="border-top pt-3">
-            <p class="text-muted">Do you have an account with us?</p> <a class="ml-2" href="{% url 'login' %}">Login</a>
+            <p class="text-muted">Don't have an account?</p> <a class="ml-2" href="{% url 'signup'}">Sign Up</a>
                 </div>
         
     </div>
