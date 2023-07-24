@@ -1,10 +1,24 @@
 {% extends "website/base.html" %}
-{% load crispy_forms_tags %}
+
 
 {% block content %}
 
- 
-<h1>{{ user.username }}</h1>
+ <div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 mt-5 pt-5">
+            <div class="row z-depth-3">
+                <div class="col-sm-4 bg-info rounded-left">
+                    <div class="card-block text-center text-white">
+<h1>Profile</h1>
+                        <h2>{{ user.username }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
 
 {% endblock content%}
 
