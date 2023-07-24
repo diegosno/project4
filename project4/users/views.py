@@ -9,8 +9,8 @@ def signUp(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Welcome {username}! Your account has been created')
-            return redirect('website-index')
+            messages.success(request, f'Welcome {username}! Login to continue. ')
+            return redirect('login')
 
     else:
         form = signUpForm()
