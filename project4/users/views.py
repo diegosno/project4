@@ -16,6 +16,8 @@ def signUp(request):
         form = signUpForm()
     return render(request, 'users/signup.html', {'form': form} )
 
+def profile(request):
+    return render (request, 'users.profile.html')
 
 
 # Create your views here.
