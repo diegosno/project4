@@ -10,10 +10,17 @@ class signUpForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         
-class updateProfile(forms.ModelForm):
+class updateCredentials(forms.ModelForm):
     email = forms.EmailField()
     
     class Meta:
         model = User
         fields = ['username', 'email']
+        
+class updateProfile(forms.ModelForm):
+    class Meta:
+        model = Profile
+        field = ['image']
+        
+    
     
