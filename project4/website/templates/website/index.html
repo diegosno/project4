@@ -1,13 +1,19 @@
 {% extends "website/base.html" %}
 {% block content %}
+
+
 {% for news in news %}
 <div class="container">
-<div class="card bg-light mb-3" style="max-width: 20rem;">
-    <div class="card-header">{{ news.title }}</div>
-    <div class="card-body">
-      <h4 class="card-title">Light card title</h4>
-      <p class="card-text">{{ news.content }}</p>
-      <p>By {{ news.author }} on {{ news.date_created|date:"d/N/Y" }}</p>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card bg-light mb-3">
+        <div class="card-header">{{ news.title }}</div>
+        <div class="card-body">
+          <h4 class="card-title">Light card title</h4>
+          <p class="card-text">{{ news.content }}</p>
+          <p>By {{ news.author }} on {{ news.date_created|date:"d/N/Y" }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
