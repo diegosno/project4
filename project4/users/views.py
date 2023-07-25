@@ -19,8 +19,8 @@ def signUp(request):
 
 @login_required
 def profile(request):
-    credentialsForm = updateCredentials()
-    profileForm =  updateProfile()
+    credentialsForm = updateCredentials(instance=request.user)
+    profileForm =  updateProfile(instance=request.user.profile)
     
     context = {
         'credentialsForm': credentialsForm, 

@@ -20,7 +20,7 @@ class updateCredentials(forms.ModelForm):
 class updateProfile(forms.ModelForm):
     class Meta:
         model = Profile
-        field = ['image']
+        fields = ['picture', 'bio']
         
     
     
