@@ -5,13 +5,13 @@
 {% block content %}
 
  <div class="container">
-    <h1>Profile</h1>
+
     <div class="row d-flex justify-content-center">
         <div class="col-md-12 mt-3 pt-3">
             <div class="row">
               
 
-                <div class="col-sm-4 bg-light">
+                <div class="p-0 col-sm-4 bg-light">
                     <div class="media p-3 ">
                         <img class="img-fluid " src="{{ user.profile.picture.url }}" >
                     </div>
@@ -37,13 +37,13 @@
                         <div class="col d-flex justify-content-center ">
                             <form method="POST" enctype = "multipart/form-data" class="p-3">
                                 {% csrf_token %}
-                                <fieldset class="form-group">
-                                    <legend class="border-bottom p-2 d-flex justify-content-center">Profile Info</legend>
+                                <fieldset class="form-group p-0 m-0">
+                                    <legend class="border-bottom p-0  d-flex justify-content-center">Profile</legend>
                                     {{ credentialsForm|crispy }}
                                     {{ profileForm|crispy }}
                                 </fieldset>
-                                <div class="form-group d-flex justify-content-center p-1">
-                                    <button class="btn btn-outline-info" type="submit">Update</button>
+                                <div class="form-group d-flex justify-content-center p-2">
+                                    <button class="btn btn-outline-info " type="submit">Update</button>
                                 </div>
                     
                              
