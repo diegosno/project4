@@ -19,8 +19,19 @@ def signUp(request):
 
 @login_required
 def profile(request):
-    credentialsForm = updateCredentials(instance=request.user)
-    profileForm =  updateProfile(instance=request.user.profile)
+    if request.method == 'POST':
+        credentialsForm = updateCredentials(request.POST, instance=request.user)
+        profileForm =  updateProfile(request.POST, request.FILES, instance=request.user.profile)
+        if credentialsForm.is_valid() and profileForm.is_valid():
+            credentialsForm.save()
+            profileForm.save()
+
+            messages.success(request, f'Data updated succesfully.')
+            return redirect('profile')
+            
+    else:
+        credentialsForm = updateCredentials(instance=request.user)
+        profileForm =  updateProfile(instance=request.user.profile)
     
     context = {
         'credentialsForm': credentialsForm, 
