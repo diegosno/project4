@@ -4,15 +4,38 @@
 {% block content %}
 
  <div class="container">
+    <h1>Profile</h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-10 mt-5 pt-5">
             <div class="row z-depth-3">
-                <div class="col-sm-4 bg-info rounded-left">
-                    <div class="card-block text-center text-white">
-<h1>Profile</h1>
-                        <h2>{{ user.username }}</h2>
-                        <p>{{ user.email }}</p>
+              
+
+                <div class="col-sm-4 bg-light">
+                    <div class="media mt-2">
+                        <img class="img-fluid " src="{{ user.profile.picture.url }}" >
                     </div>
+               
+                    <div class="text-center text-muted pt-3 pb-3">
+                   
+                        <h2>{{ user.username }}</h2>
+                       
+                    </div>
+                    <div class="text-center text-muted pt-3 pb-3">
+<p>Bio</p>
+                    </div>
+        
+                </div>
+                <div class="col-sm-8 bg-light ">
+                    <h3 class="mt-3 text-center"> Information</h3>
+                    <hr class="badge-primary ">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="font-weight-bold">Email:</p>
+                            <h6 class="text-muted"> {{ user.email }}</h6>
+                        </div>
+                     
+                    </div>
+               
                 </div>
             </div>
         </div>
