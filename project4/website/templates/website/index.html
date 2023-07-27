@@ -10,7 +10,8 @@
     <div class="col-md-8 mt-3 pt-3">
       <div class="card bg-light mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <span><a href = "#">{{ news.title }}</a></span>
+          <span><a href="{% url 'new-detail' pk=news.pk %}">{{ news.title }}</a></span>
+
       
         </div>
         <div class="card-body">
