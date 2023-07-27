@@ -1,0 +1,30 @@
+
+{% extends "website/base.html" %}
+
+{% block content %}
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mt-3 pt-3">
+      <div class="card bg-light mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>{{ object.title }}</span>
+      
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ object.content }}</p>
+        
+          <p>By {{ object.author }} on {{ object.date_created|date:"d/N/Y" }}</p>
+            <img class="author-icon rounded-circle" src="{{ object.author.profile.picture.url }}"  >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+{% endblock content%}
