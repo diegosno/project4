@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import New
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -20,7 +21,7 @@ class NewListView(ListView):
 class NewDetailView(DetailView):
     model = New
    
-class NewCreateView(CreateView):
+class NewCreateView(LoginRequiredMixin, CreateView):
     model = New
     fields = ['title', 'content']
     
