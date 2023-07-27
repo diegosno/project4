@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import New
 # Create your views here.
 
@@ -15,6 +15,10 @@ class NewListView(ListView):
     template_name = 'website/index.html'
     context_object_name = 'news'
     ordering = ['-date_created']
+    
+class NewDetailView(DetailView):
+    model = New
+   
 
 def contact(request):
     return render(request, 'website/contact.html', {'title': 'Contact'})
