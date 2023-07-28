@@ -1,6 +1,6 @@
 from typing import Any, Callable, Optional
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import New
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -47,6 +47,15 @@ class NewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
     def get_success_url(self):
         return reverse('website-index')
+    
+class NewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = New
+    success_url = "/"
+    
+    def test_func(self):
+        return self.request.user == self.get_object().author
+          
+
 
 def contact(request):
     return render(request, 'website/contact.html', {'title': 'Contact'})
