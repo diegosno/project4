@@ -6,13 +6,13 @@
 
  <div class="container">
 
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12 mt-3 pt-3">
+    <div class="m-3 row d-flex justify-content-center">
+        <div class="col-md-12 m-3 pt-3">
             <div class="row">
               
 
                 <div class="p-0 col-sm-4 bg-light">
-                    <div class="media p-3 ">
+                    <div class="media p-3 m-3 ">
                         <img class="img-fluid " src="{{ user.profile.picture.url }}" >
                     </div>
                
@@ -22,7 +22,7 @@
                     
                        
                     </div>
-                    <div class="text-center text-muted p-3">
+                    <div class="text-center text-muted p-3 m-3">
                         <p>{{ user.email }}</p>
                         <p>{{ user.profile.bio }}</p>
 
@@ -34,16 +34,16 @@
             
                
                     <div class="row">
-                        <div class="col d-flex justify-content-center ">
-                            <form method="POST" enctype = "multipart/form-data" class="p-3">
+                        <div class=" m-3 col d-flex justify-content-center ">
+                            <form method="POST" enctype = "multipart/form-data" class="p-3 m-3">
                                 {% csrf_token %}
                                 <fieldset class="form-group p-0 m-0">
                                     <legend class="border-bottom p-0  d-flex justify-content-center">Profile</legend>
                                     {{ credentialsForm|crispy }}
                                     {{ profileForm|crispy }}
                                 </fieldset>
-                                <div class="form-group d-flex justify-content-center p-2">
-                                    <button class="btn btn-outline-info " type="submit">Update</button>
+                                <div class="form-group d-flex justify-content-center m-3  mb-0 ">
+                                    <button class="btn btn-primary " type="submit">Update</button>
                                 </div>
                     
                              

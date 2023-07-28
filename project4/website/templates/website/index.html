@@ -7,18 +7,29 @@
 {% for news in news %}
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8 mt-3 pt-3">
-      <div class="card bg-light mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="col-md-8 m-3 p-3">
+      <div class="card bg-light m-3">
+        <div class="bg-light card-header d-flex justify-content-between align-items-center m-3">
           <span><a href="{% url 'new-detail' pk=news.pk %}">{{ news.title }}</a></span>
 
       
         </div>
-        <div class="card-body">
-          <p class="card-text">{{ news.content }}</p>
-        
-          <p>By {{ news.author }} on {{ news.date_created|date:"d/N/Y" }}</p>
+        <div class="m-3 card-body">
+          <p class="card-text ">{{ news.content }}</p>
+        </div>
+
+          <div class="d-flex align-items-center justify-content-between m-3 ">
             <img class="author-icon rounded-circle" src="{{ news.author.profile.picture.url }}"  >
+            <p>By {{ news.author }} on {{ news.date_created|date:"d/N/Y" }}</p>
+         
+          </div>
+        
+      
+
+
+
+
+           
         </div>
       </div>
     </div>
