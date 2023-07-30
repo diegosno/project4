@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import NewListView, NewDetailView, NewCreateView, NewUpdateView, NewDeleteView
+from .views import NewListView, NewDetailView, NewCreateView, NewUpdateView, NewDeleteView, UserNewListView
 from . import views 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('new/<int:pk>/delete', NewDeleteView.as_view(), name='new-delete'),
     path('new/create/', NewCreateView.as_view(), name='new-create'),
     path('contact/', views.contact, name='website-contact'),
+    path('user/<str:username>', UserNewListView.as_view(), name='user-news'),
 ]
