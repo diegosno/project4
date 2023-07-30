@@ -1,0 +1,90 @@
+
+{% extends "website/base.html" %}
+
+{% block content %}
+
+
+
+
+  {% for news in news %}
+
+  <div class="container">
+  
+   
+  <div class="row justify-content-center">
+    <div class="col-md-8 m-3 p-3">
+      <div class="card bg-light m-3">
+        <div class="bg-light card-header d-flex justify-content-between align-items-center m-3">
+          <span><a href="{% url 'new-detail' pk=news.pk %}">{{ news.title }}</a></span>
+
+      
+        </div>
+        <div class="m-3 card-body">
+          <p class="card-text ">{{ news.content }}</p>
+        </div>
+
+          <div class="d-flex align-items-center justify-content-between m-3 ">
+            <img class="author-icon rounded-circle" src="{{ news.author.profile.picture.url }}"  >
+            <p>By <a href="{% url 'user-news' news.author.username %}">{{ news.author }}</a> on {{ news.date_created|date:"d/N/Y" }}</p>
+         
+          </div>
+        
+
+      
+
+
+
+
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+  
+
+
+
+
+
+  <div class="container d-flex justify-content-center">
+    {% if is_paginated %}
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1">Newest</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Newest</span>
+        </li>
+      {% endif %}
+  
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <li class="page-item active"> 
+            <span class="page-link">{{ num }}</span>
+          </li>
+        {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+  
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Oldest</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Oldest</span>
+        </li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+  
+    
+{% endblock content%}
