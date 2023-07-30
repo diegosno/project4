@@ -1,9 +1,10 @@
 from typing import Any, Callable, Optional
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import New
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -19,6 +20,18 @@ class NewListView(ListView):
     context_object_name = 'news'
     ordering = ['-date_created'] 
     paginate_by = 3
+    
+class UserNewListView(ListView):
+    model = New
+    template_name = 'website/index.html'
+    context_object_name = 'news'
+    ordering = ['-date_created'] 
+    paginate_by = 3
+    
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return New.objects.filter(author=user).order_by('-date_created')
+        
     
 class NewDetailView(DetailView):
     model = New
