@@ -18,6 +18,7 @@ class NewListView(ListView):
     template_name = 'website/index.html'
     context_object_name = 'news'
     ordering = ['-date_created'] 
+    paginate_by = 3
     
 class NewDetailView(DetailView):
     model = New
