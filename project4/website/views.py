@@ -3,9 +3,12 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import New
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .forms import signUpForm, updateCredentials, updateProfile
 
 # Create your views here.
 
@@ -77,3 +80,41 @@ class NewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def contact(request):
     return render(request, 'website/contact.html', {'title': 'Contact'})
+
+
+def signUp(request):
+    if request.method == 'POST':
+        form = signUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+       
+            messages.success(request, f'Welcome {username}! Login to continue. ')
+            return redirect('login')
+
+    else:
+        form = signUpForm()
+    return render(request, 'website/signup.html', {'form': form} )
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        credentialsForm = updateCredentials(request.POST, instance=request.user)
+        profileForm =  updateProfile(request.POST, request.FILES, instance=request.user.profile)
+        if credentialsForm.is_valid() and profileForm.is_valid():
+            credentialsForm.save()
+            profileForm.save()
+
+            messages.success(request, f'Data updated succesfully.')
+            return redirect('profile')
+            
+    else:
+        credentialsForm = updateCredentials(instance=request.user)
+        profileForm =  updateProfile(instance=request.user.profile)
+    
+    context = {
+        'credentialsForm': credentialsForm, 
+        'profileForm': profileForm
+    }
+    
+    return render (request, 'website/profile.html', context)
