@@ -4,12 +4,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import signUpForm, updateCredentials, updateProfile
 
+
 def signUp(request):
     if request.method == 'POST':
         form = signUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+       
             messages.success(request, f'Welcome {username}! Login to continue. ')
             return redirect('login')
 

@@ -5,13 +5,17 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
+
+
 # Create your views here.
 
 
 def index(request):
     context = {
-        'news': New.objects.all()
+        'news': New.objects.all(),
+
     }
+  
     return render(request, 'website/index.html', context)
 
 class NewListView(ListView):
