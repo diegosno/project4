@@ -3,15 +3,17 @@
 
 {% block content %}
 
- 
-    <div class="container">
-        <h1>You are now logged out</h1>
+ <div class=" container  ">
+            <div class="row justify-content-center m-3 p-3">
+                <div class="m-3 bg-light col-md-8 ">
+        <p class="m-3  d-flex justify-content-center">You are now logged out</p>
       
-        <div class="border-top pt-3">
-            <p class="text-muted">Want to login again?</p> <a class="ml-2" href="{% url 'login' %}">Login</a>
+        <div class="border-top  pt-3">
+            <p class=" d-flex justify-content-center m-3 text-muted">Want to login again?</p> <div class="d-flex justify-content-center"> <a class="  m-3 btn btn-primary" href="{% url 'login' %}">Login</a></div>
      
                 </div>
-        
+            </div>
+        </div>
     </div>
 
 
